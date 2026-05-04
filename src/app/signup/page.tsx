@@ -1,17 +1,17 @@
-import { SignIn } from "@clerk/nextjs";
-import Link from "next/link";
+import { SignUp } from "@clerk/nextjs";
 import Image from "next/image";
+import Link from "next/link";
 import AuthShowcase from "../../components/auth/AuthShowcase";
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <main className="auth-page">
       <section className="auth-layout">
         <AuthShowcase
-          kicker="Patakeja Escrow Homes"
-          title="Welcome back to smarter renting."
-          description="Log in to continue secure applications, protected payments, and verified conversations with landlords."
-          imageSrc="/login.png"
+          kicker="Start Your Journey"
+          title="Create your Patakeja account."
+          description="Join thousands of tenants and landlords using secure escrow to rent with confidence."
+          imageSrc="/signup.png"
         />
 
         <section className="auth-panel">
@@ -26,21 +26,21 @@ export default function LoginPage() {
                 width={148}
                 height={38}
               />
-              <span className="auth-chip">Escrow Protected</span>
+              <span className="auth-chip">New Account</span>
             </div>
           </div>
 
           <header className="auth-header">
-            <p className="auth-welcome">Welcome back</p>
-            <h2>Log in to your account</h2>
-            <p>Use your email or connected provider to continue.</p>
+            <p className="auth-welcome">Get started</p>
+            <h2>Create your account</h2>
+            <p>Set up your profile to explore verified homes instantly.</p>
           </header>
 
           <div className="auth-clerk-shell">
-            <SignIn
-              path="/login"
+            <SignUp
+              path="/signup"
               routing="path"
-              signUpUrl="/signup"
+              signInUrl="/login"
               forceRedirectUrl="/"
               fallbackRedirectUrl="/"
               appearance={{
@@ -65,7 +65,7 @@ export default function LoginPage() {
 
           <footer className="auth-footer">
             <p>
-              New here? <Link href="/signup">Create your account</Link>
+              Already have an account? <Link href="/login">Log in</Link>
             </p>
             <p>
               Forgot password? <Link href="/forgot-password">Reset it here</Link>
