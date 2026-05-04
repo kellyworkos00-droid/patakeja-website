@@ -43,7 +43,7 @@ export default function Home() {
 
         {active < 4 && (
           <div className="logo-row">
-            <Image src="/patakeja-logo.png" alt="PataKeja" width={108} height={28} />
+            <Image src="/patakeja-logo-removebg-preview.png" alt="PataKeja" width={108} height={28} />
           </div>
         )}
 

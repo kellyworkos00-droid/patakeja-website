@@ -21,7 +21,7 @@ export default function LoginPage() {
             </Link>
             <div className="auth-brand">
               <Image
-                src="/patakeja-logo.png"
+                src="/patakeja-logo-removebg-preview.png"
                 alt="PataKeja"
                 width={148}
                 height={38}
