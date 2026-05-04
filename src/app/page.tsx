@@ -54,9 +54,11 @@ export default function Home() {
   return (
     <main className="onboarding-wrap">
       <section className={`phone-frame slide-${active + 1}`}>
-        <button type="button" className="skip-link" onClick={() => setActive(4)}>
-          Skip
-        </button>
+        {active < 4 && (
+          <button type="button" className="skip-link" onClick={() => setActive(4)}>
+            Skip
+          </button>
+        )}
 
         <div className="status-time">9:41</div>
         <div className="status-right" aria-hidden>
@@ -65,12 +67,15 @@ export default function Home() {
           <span />
         </div>
 
+        {active < 4 && (
+          <div className="logo-row">
+            <Image src="/patakeja-logo.png" alt="PataKeja" width={150} height={39} />
+          </div>
+        )}
+
         {active === 0 && (
-          <>
-            <div className="logo-row">
-              <Image src="/patakeja-logo.png" alt="PataKeja" width={170} height={44} />
-            </div>
-            <div className="content-block first-slide-text">
+          <div className="slide-hero">
+            <div className="hero-text">
               <h1>
                 Find your
                 <br />
@@ -83,14 +88,17 @@ export default function Home() {
                 confidence.
               </p>
             </div>
-            <Image
-              src="/onboarding-first-screen.png"
-              alt="Calm interior"
-              fill
-              className="bg-shot"
-              priority
-            />
-          </>
+            <div className="hero-illustration">
+              <Image
+                src="/onboarding-hero.png"
+                alt="People looking for homes"
+                width={520}
+                height={392}
+                className="hero-img"
+                priority
+              />
+            </div>
+          </div>
         )}
 
         {active === 1 && (
@@ -225,27 +233,27 @@ export default function Home() {
           </>
         )}
 
-        <footer className="slide-footer">
-          <div className="dots" aria-label="Onboarding progress">
-            {Array.from({ length: slideCount }).map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                className={index === active ? "dot active" : "dot"}
-                onClick={() => setActive(index)}
-                aria-label={`Go to step ${index + 1}`}
-              />
-            ))}
-          </div>
+        {active < 4 && (
+          <footer className="slide-footer">
+            <div className="dots" aria-label="Onboarding progress">
+              {Array.from({ length: slideCount }).map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  className={index === active ? "dot active" : "dot"}
+                  onClick={() => setActive(index)}
+                  aria-label={`Go to step ${index + 1}`}
+                />
+              ))}
+            </div>
 
-          <button type="button" className="next-btn" onClick={onNext}>
-            <span aria-hidden>→</span>
-            <span className="sr-only">{nextLabel}</span>
-          </button>
-        </footer>
+            <button type="button" className="next-btn" onClick={onNext}>
+              <span aria-hidden>→</span>
+              <span className="sr-only">{nextLabel}</span>
+            </button>
+          </footer>
+        )}
       </section>
-
-      <p className="reference-note">{slideTitle}</p>
     </main>
   );
 }

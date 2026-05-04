@@ -107,9 +107,14 @@ body {
 
 .logo-row {
   position: absolute;
-  top: 8rem;
+  top: 4.2rem;
   left: 1.4rem;
-  z-index: 3;
+  z-index: 5;
+  transition: opacity 0.25s ease;
+}
+
+.slide-3 .logo-row img {
+  filter: brightness(0) invert(1);
 }
 
 .content-block,
@@ -118,9 +123,54 @@ body {
   z-index: 4;
 }
 
-.first-slide-text {
-  padding: 13.5rem 1.4rem 0;
-  max-width: 320px;
+.slide-hero {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 8.5rem 1.4rem 5.5rem;
+}
+
+.hero-text {
+  flex: 0 0 auto;
+}
+
+.hero-text h1 {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.2rem, 2rem + 2vw, 3rem);
+}
+
+.hero-text h1 span {
+  color: var(--green);
+}
+
+.hero-text p {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 1.05rem;
+  max-width: 30ch;
+}
+
+.hero-illustration {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 -1.4rem -5.5rem;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  max-height: 320px;
 }
 
 .content-block h1,
@@ -153,12 +203,8 @@ body {
   z-index: 1;
 }
 
-.slide-1 .bg-shot {
-  top: 31%;
-}
-
 .trust-slide {
-  padding: 13rem 1.4rem 0;
+  padding: 10.5rem 1.4rem 0;
 }
 
 .trust-cards {
@@ -250,7 +296,7 @@ body {
 }
 
 .booking-slide {
-  padding: 13rem 1.4rem 0;
+  padding: 10.5rem 1.4rem 0;
 }
 
 .calendar-card {
@@ -389,8 +435,20 @@ body {
   height: 56px;
   background: #fff;
   color: #1f2d4d;
-  font-size: 1.45rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.22);
 }
 
 .login-link {
@@ -462,12 +520,6 @@ body {
   border: 0;
 }
 
-.reference-note {
-  margin: 0;
-  color: #5f6d86;
-  font-size: 0.95rem;
-}
-
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -478,6 +530,23 @@ body {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.content-block,
+.content-card,
+.overlay-card {
+  animation: slide-in-right 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (max-width: 430px) {
@@ -492,9 +561,6 @@ body {
     border: 0;
   }
 
-  .reference-note {
-    display: none;
-  }
 }
 
 .auth-page {
@@ -579,14 +645,18 @@ body {
 
 .auth-brand {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
+  align-items: flex-start;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.auth-brand span {
-  color: #5f6f8d;
-  font-size: 0.88rem;
+.auth-welcome {
+  margin: 0 0 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
 .auth-header h2 {
